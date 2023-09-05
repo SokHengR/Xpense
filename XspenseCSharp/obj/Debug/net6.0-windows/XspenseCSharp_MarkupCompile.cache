@@ -1,5 +1,5 @@
 ﻿XspenseCSharp
-1.0.0.0
+
 
 winexe
 C#
@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\SokHeng\Documents\GitHub\XspenseCSharp\XspenseCSharp\App.xaml
 11407045341
 
-5-2091299115
+3-1233169557
 194726069201
 MainWindow.xaml;
 
-True
+False
 

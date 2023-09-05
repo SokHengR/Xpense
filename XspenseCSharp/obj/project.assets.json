@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\SokHeng\\Documents\\GitHub\\XpenseCSharp\\XspenseCSharp\\XspenseCSharp\\XspenseCSharp.csproj",
+      "projectUniqueName": "C:\\Users\\SokHeng\\Documents\\GitHub\\XspenseCSharp\\XspenseCSharp\\XspenseCSharp.csproj",
       "projectName": "XspenseCSharp",
-      "projectPath": "C:\\Users\\SokHeng\\Documents\\GitHub\\XpenseCSharp\\XspenseCSharp\\XspenseCSharp\\XspenseCSharp.csproj",
+      "projectPath": "C:\\Users\\SokHeng\\Documents\\GitHub\\XspenseCSharp\\XspenseCSharp\\XspenseCSharp.csproj",
       "packagesPath": "C:\\Users\\SokHeng\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\SokHeng\\Documents\\GitHub\\XpenseCSharp\\XspenseCSharp\\XspenseCSharp\\obj\\",
+      "outputPath": "C:\\Users\\SokHeng\\Documents\\GitHub\\XspenseCSharp\\XspenseCSharp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\SokHeng\\AppData\\Roaming\\NuGet\\NuGet.Config",

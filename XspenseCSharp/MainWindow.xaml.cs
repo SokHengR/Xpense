@@ -12,17 +12,33 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace XspenseCSharp
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+            RunFunctionAfterDelay(EndThisScreen, 5000);
+        }
+
+        private void RunFunctionAfterDelay(Action functionToRun, int millisecondsDelay)
+        {
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMilliseconds(millisecondsDelay);
+            timer.Tick += (sender, e) =>
+            {
+                timer.Stop();
+                functionToRun();
+            };
+            timer.Start();
+        }
+
+        public void EndThisScreen()
+        {
+            this.Close();
         }
     }
 }
