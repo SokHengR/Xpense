@@ -7,10 +7,11 @@
         mc:Ignorable="d"
         Title="SplashScreen" Height="392" Width="644" ResizeMode="NoResize" Icon="/xpense_app_icon.jpg" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid Background="Black">
-        <Image Source="/x_splashscreen_sprite.png" HorizontalAlignment="Left" Width="348" Margin="296,0,0,0"/>
+        <Image Source="/x_splashscreen_sprite.png" HorizontalAlignment="Left" Width="347" Margin="297,0,0,0"/>
         <Label Content="Xpense&#xD;&#xA;" HorizontalAlignment="Left" Margin="46,56,0,0" Foreground="White" Width="264" Height="108" VerticalAlignment="Top" FontSize="72"/>
         <Image HorizontalAlignment="Left" Height="100" Margin="128,209,0,0" VerticalAlignment="Top" Width="102" Source="/astack of coin lmao.png"/>
         <Label Content="Track your expanse easily with Xpense app.&#xD;&#xA;" HorizontalAlignment="Left" Margin="46,170,0,0" VerticalAlignment="Top" Foreground="White" Height="30"/>
+        <ProgressBar x:Name="LoadingProgressBar" Height="20" VerticalAlignment="Bottom"/>
 
     </Grid>
 </Window>

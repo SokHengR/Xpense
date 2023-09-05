@@ -21,10 +21,11 @@ namespace XspenseCSharp
         public MainWindow()
         {
             InitializeComponent();
-            RunFunctionAfterDelay(EndThisScreen, 5000);
+            Invoke(EndThisScreen, 5000);
+            Invoke(RisingProgressValue, 50);
         }
 
-        private void RunFunctionAfterDelay(Action functionToRun, int millisecondsDelay)
+        private static void Invoke(Action functionToRun, int millisecondsDelay)
         {
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(millisecondsDelay);
@@ -39,6 +40,15 @@ namespace XspenseCSharp
         public void EndThisScreen()
         {
             this.Close();
+        }
+
+        void RisingProgressValue()
+        {
+            if(LoadingProgressBar.Value < 100)
+            {
+                LoadingProgressBar.Value += 1;
+                Invoke(RisingProgressValue, 40);
+            }
         }
     }
 }
