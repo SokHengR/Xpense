@@ -39,6 +39,8 @@ namespace XspenseCSharp
 
         public void EndThisScreen()
         {
+            LoginScreen loginScreen = new LoginScreen();
+            loginScreen.Show();
             this.Close();
         }
 
@@ -47,7 +49,7 @@ namespace XspenseCSharp
             if(LoadingProgressBar.Value < 100)
             {
                 LoadingProgressBar.Value += 1;
-                Invoke(RisingProgressValue, 40);
+                Invoke(RisingProgressValue, 35);
             }
         }
     }

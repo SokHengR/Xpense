@@ -18,3 +18,5 @@ C:\Users\SokHeng\Documents\GitHub\XspenseCSharp\XspenseCSharp\obj\Debug\net6.0-w
 C:\Users\SokHeng\Documents\GitHub\XspenseCSharp\XspenseCSharp\obj\Debug\net6.0-windows\XspenseCSharp.pdb
 C:\Users\SokHeng\Documents\GitHub\XspenseCSharp\XspenseCSharp\obj\Debug\net6.0-windows\XspenseCSharp.genruntimeconfig.cache
 C:\Users\SokHeng\Documents\GitHub\XspenseCSharp\XspenseCSharp\obj\Debug\net6.0-windows\ref\XspenseCSharp.dll
+C:\Users\SokHeng\Documents\GitHub\XspenseCSharp\XspenseCSharp\obj\Debug\net6.0-windows\LoginScreen.g.cs
+C:\Users\SokHeng\Documents\GitHub\XspenseCSharp\XspenseCSharp\obj\Debug\net6.0-windows\LoginScreen.baml
