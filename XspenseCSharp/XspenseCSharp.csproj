@@ -15,6 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="astack of coin lmao.png" />
     <Resource Include="login screen background.jpg" />
     <Resource Include="xpense_app_icon.jpg" />

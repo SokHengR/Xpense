@@ -22,7 +22,7 @@ namespace XspenseCSharp
         {
             InitializeComponent();
             Invoke(EndThisScreen, 5000);
-            Invoke(RisingProgressValue, 50);
+            Invoke(RisingProgressValue, 3000);
         }
 
         private static void Invoke(Action functionToRun, int millisecondsDelay)
@@ -49,7 +49,7 @@ namespace XspenseCSharp
             if(LoadingProgressBar.Value < 100)
             {
                 LoadingProgressBar.Value += 1;
-                Invoke(RisingProgressValue, 35);
+                Invoke(RisingProgressValue, 10);
             }
         }
     }

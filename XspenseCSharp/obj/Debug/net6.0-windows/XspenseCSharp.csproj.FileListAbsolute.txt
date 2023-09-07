@@ -20,3 +20,8 @@ C:\Users\SokHeng\Documents\GitHub\XspenseCSharp\XspenseCSharp\obj\Debug\net6.0-w
 C:\Users\SokHeng\Documents\GitHub\XspenseCSharp\XspenseCSharp\obj\Debug\net6.0-windows\ref\XspenseCSharp.dll
 C:\Users\SokHeng\Documents\GitHub\XspenseCSharp\XspenseCSharp\obj\Debug\net6.0-windows\LoginScreen.g.cs
 C:\Users\SokHeng\Documents\GitHub\XspenseCSharp\XspenseCSharp\obj\Debug\net6.0-windows\LoginScreen.baml
+C:\Users\SokHeng\Documents\GitHub\XspenseCSharp\XspenseCSharp\obj\Debug\net6.0-windows\RegisterScreen.g.cs
+C:\Users\SokHeng\Documents\GitHub\XspenseCSharp\XspenseCSharp\obj\Debug\net6.0-windows\RegisterScreen.baml
+C:\Users\SokHeng\Documents\GitHub\XspenseCSharp\XspenseCSharp\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+C:\Users\SokHeng\Documents\GitHub\XspenseCSharp\XspenseCSharp\obj\Debug\net6.0-windows\XspenseCSharp.csproj.AssemblyReference.cache
+C:\Users\SokHeng\Documents\GitHub\XspenseCSharp\XspenseCSharp\obj\Debug\net6.0-windows\XspenseCSharp.csproj.CopyComplete

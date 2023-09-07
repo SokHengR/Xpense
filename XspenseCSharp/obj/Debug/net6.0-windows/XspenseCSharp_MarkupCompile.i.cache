@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\SokHeng\Documents\GitHub\XspenseCSharp\XspenseCSharp\App.xaml
-2-1526387750
+3-1861621442
 
-61267363800
-194726069201
-LoginScreen.xaml;MainWindow.xaml;
+9777922236
+195-623831500
+LoginScreen.xaml;MainWindow.xaml;RegisterScreen.xaml;
 
-True
+False
 

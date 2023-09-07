@@ -14,14 +14,28 @@ using System.Windows.Shapes;
 
 namespace XspenseCSharp
 {
-    /// <summary>
-    /// Interaction logic for LoginScreen.xaml
-    /// </summary>
     public partial class LoginScreen : Window
     {
+        UserLoginDataContainer userLogin; 
         public LoginScreen()
         {
+            if (NativeFileManager.shared.IsFileExists("LoginData"))
+            {
+                string userFileDataString = NativeFileManager.shared.ReadTextFromFile("LoginData");
+                userLogin = CoreDataManager.shared.ReadUserDataFromJsonString(userFileDataString);
+            }
             InitializeComponent();
+        }
+
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        {
+            RegisterScreen registerScreen = new RegisterScreen();
+            registerScreen.Show();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(userLogin.ToString());
         }
     }
 }
