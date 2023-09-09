@@ -10,11 +10,11 @@
         <Image Source="/login screen background.jpg" Stretch="UniformToFill"/>
         <Label Content="Xpense" Margin="10,10,10,0" VerticalAlignment="Top" Foreground="White" HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="36"/>
         <Label Content="Login" HorizontalAlignment="Center" Margin="0,73,0,0" VerticalAlignment="Top" Foreground="White" FontSize="22" FontWeight="Bold"/>
-        <TextBox Margin="46,156,46,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18"/>
-        <Button Content="Login" Margin="46,0,46,66" VerticalAlignment="Bottom" Height="28" Foreground="White" Background="#FF1300FF" FontSize="18" Click="Button_Click"/>
+        <TextBox x:Name="UsernameInputField" Margin="46,156,46,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18"/>
+        <Button x:Name="LoginButton" Content="Login" Margin="46,0,46,66" VerticalAlignment="Bottom" Height="28" Foreground="White" Background="#FF1300FF" FontSize="18" Click="LoginButton_Click"/>
         <Label Content="Username :" Margin="46,117,46,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
         <Label Content="Password :" Margin="46,187,46,0" VerticalAlignment="Top" Foreground="White" FontSize="18"/>
-        <PasswordBox Margin="46,226,46,0" VerticalAlignment="Top" FontSize="18"/>
+        <PasswordBox x:Name="PasswordInputField" Margin="46,226,46,0" VerticalAlignment="Top" FontSize="18"/>
         <Button x:Name="RegisterButton" Content="Register Here" Margin="46,0,46,33" FontSize="18" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Height="28" VerticalAlignment="Bottom" Click="RegisterButton_Click" Cursor="Pen"/>
 
     </Grid>

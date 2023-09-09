@@ -60,10 +60,12 @@ namespace XspenseCSharp
                 newUser.Email = EmailTextBox.Text;
                 newUser.Password = PasswordTextBox.Password;
                 newUser.UserUUID = Guid.NewGuid().ToString();
-                userLoginDataContainer.data.Append(newUser);
+                userLoginDataContainer.data = new List<UserLoginData>() { newUser };
                 string jsonOutputContent = CoreDataManager.shared.WriteUserToJsonData(userLoginDataContainer);
                 NativeFileManager.shared.SaveTextToFile(jsonOutputContent, "LoginData");
             }
+            MessageBox.Show("Your account was registered");
+            this.Close();
         }
     }
 }

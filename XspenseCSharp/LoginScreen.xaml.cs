@@ -19,11 +19,6 @@ namespace XspenseCSharp
         UserLoginDataContainer userLogin; 
         public LoginScreen()
         {
-            if (NativeFileManager.shared.IsFileExists("LoginData"))
-            {
-                string userFileDataString = NativeFileManager.shared.ReadTextFromFile("LoginData");
-                userLogin = CoreDataManager.shared.ReadUserDataFromJsonString(userFileDataString);
-            }
             InitializeComponent();
         }
 
@@ -33,9 +28,27 @@ namespace XspenseCSharp
             registerScreen.Show();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(userLogin.ToString());
+            if (string.IsNullOrEmpty(UsernameInputField.Text) || string.IsNullOrEmpty(PasswordInputField.Password))
+            {
+                MessageBox.Show("Can't login with empty username or password");
+                return;
+            }
+            if (NativeFileManager.shared.IsFileExists("LoginData"))
+            {
+                string userFileDataString = NativeFileManager.shared.ReadTextFromFile("LoginData");
+                userLogin = CoreDataManager.shared.ReadUserDataFromJsonString(userFileDataString);
+            }
+            foreach (UserLoginData eachEle in userLogin.data)
+            {
+                if(eachEle.Username.ToLower() == UsernameInputField.Text.ToLower() && eachEle.Password == PasswordInputField.Password)
+                {
+                    MessageBox.Show(eachEle.UserUUID);
+                    return;
+                }
+                MessageBox.Show("Incorrect password or username.\nIf you don't have an account please register.");
+            }
         }
     }
 }
