@@ -19,6 +19,7 @@ namespace XspenseCSharp
     /// </summary>
     public partial class RegisterScreen : Window
     {
+        const string userAccount_sha256 = "375424f41e3db3a58eb56e7b78f2d99d3a91e7d3bcb9cea851f00369de51253a";
         public RegisterScreen()
         {
             InitializeComponent();
@@ -31,9 +32,9 @@ namespace XspenseCSharp
                 MessageBox.Show("All info are required, please kindly enter them all.\n Thank you!");
                 return;
             }
-            if (NativeFileManager.shared.IsFileExists("LoginData"))
+            if (NativeFileManager.shared.IsFileExists(userAccount_sha256))
             {
-                String fileContentString = NativeFileManager.shared.ReadTextFromFile("LoginData");
+                String fileContentString = NativeFileManager.shared.ReadTextFromFile(userAccount_sha256);
                 UserLoginDataContainer userLoginDataContainer = CoreDataManager.shared.ReadUserDataFromJsonString(fileContentString);
                 foreach (var eachItem in userLoginDataContainer.data)
                 {
@@ -48,9 +49,9 @@ namespace XspenseCSharp
                 newUser.Email = EmailTextBox.Text;
                 newUser.Password = PasswordTextBox.Password;
                 newUser.UserUUID = Guid.NewGuid().ToString();
-                userLoginDataContainer.data.Append(newUser);
+                userLoginDataContainer.data.Add(newUser);
                 string jsonOutputContent = CoreDataManager.shared.WriteUserToJsonData(userLoginDataContainer);
-                NativeFileManager.shared.SaveTextToFile(jsonOutputContent, "LoginData");
+                NativeFileManager.shared.SaveTextToFile(jsonOutputContent, userAccount_sha256);
             }
             else
             {
@@ -62,7 +63,7 @@ namespace XspenseCSharp
                 newUser.UserUUID = Guid.NewGuid().ToString();
                 userLoginDataContainer.data = new List<UserLoginData>() { newUser };
                 string jsonOutputContent = CoreDataManager.shared.WriteUserToJsonData(userLoginDataContainer);
-                NativeFileManager.shared.SaveTextToFile(jsonOutputContent, "LoginData");
+                NativeFileManager.shared.SaveTextToFile(jsonOutputContent, userAccount_sha256);
             }
             MessageBox.Show("Your account was registered");
             this.Close();
