@@ -18,9 +18,9 @@ namespace XspenseCSharp
         public string Email { get; set; }
         public string UserUUID { get; set; }
     }
-    class CoreDataManager
+    class JsonConverterManager
     {
-        public static CoreDataManager shared = new CoreDataManager();
+        public static JsonConverterManager shared = new JsonConverterManager();
         public UserLoginDataContainer ReadUserDataFromJsonString(string jsonString)
         {
             var myData = JsonConvert.DeserializeObject<UserLoginDataContainer>(jsonString);

@@ -35,7 +35,7 @@ namespace XspenseCSharp
             if (NativeFileManager.shared.IsFileExists(userAccount_sha256))
             {
                 String fileContentString = NativeFileManager.shared.ReadTextFromFile(userAccount_sha256);
-                UserLoginDataContainer userLoginDataContainer = CoreDataManager.shared.ReadUserDataFromJsonString(fileContentString);
+                UserLoginDataContainer userLoginDataContainer = JsonConverterManager.shared.ReadUserDataFromJsonString(fileContentString);
                 foreach (var eachItem in userLoginDataContainer.data)
                 {
                     if (eachItem.Username.ToLower() == UsernameTextBox.Text.ToLower())
@@ -50,7 +50,7 @@ namespace XspenseCSharp
                 newUser.Password = PasswordTextBox.Password;
                 newUser.UserUUID = Guid.NewGuid().ToString();
                 userLoginDataContainer.data.Add(newUser);
-                string jsonOutputContent = CoreDataManager.shared.WriteUserToJsonData(userLoginDataContainer);
+                string jsonOutputContent = JsonConverterManager.shared.WriteUserToJsonData(userLoginDataContainer);
                 NativeFileManager.shared.SaveTextToFile(jsonOutputContent, userAccount_sha256);
             }
             else
@@ -62,7 +62,7 @@ namespace XspenseCSharp
                 newUser.Password = PasswordTextBox.Password;
                 newUser.UserUUID = Guid.NewGuid().ToString();
                 userLoginDataContainer.data = new List<UserLoginData>() { newUser };
-                string jsonOutputContent = CoreDataManager.shared.WriteUserToJsonData(userLoginDataContainer);
+                string jsonOutputContent = JsonConverterManager.shared.WriteUserToJsonData(userLoginDataContainer);
                 NativeFileManager.shared.SaveTextToFile(jsonOutputContent, userAccount_sha256);
             }
             MessageBox.Show("Your account was registered");

@@ -39,7 +39,7 @@ namespace XspenseCSharp
             if (NativeFileManager.shared.IsFileExists(userAccount_sha256))
             {
                 string userFileDataString = NativeFileManager.shared.ReadTextFromFile(userAccount_sha256);
-                userLogin = CoreDataManager.shared.ReadUserDataFromJsonString(userFileDataString);
+                userLogin = JsonConverterManager.shared.ReadUserDataFromJsonString(userFileDataString);
             }
             else
             {

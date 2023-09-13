@@ -18,7 +18,7 @@ namespace XspenseCSharp
             string filePath = Path.Combine(programDataFolderPath, fileNameToPath(fileName));
             try
             {
-                File.WriteAllText(filePath, text);
+                File.WriteAllText(filePath, Base64Encode(text));
                 Console.WriteLine("Text saved to file.");
             }
             catch (Exception ex)
@@ -40,8 +40,7 @@ namespace XspenseCSharp
             {
                 Console.WriteLine($"Error: {ex.Message}");
             }
-
-            return text;
+            return Base64Decode(text);
         }
         public bool IsFileExists(string fileName)
         {
@@ -56,6 +55,18 @@ namespace XspenseCSharp
                 Directory.CreateDirectory(programDataFolderPath + "/Xpense/");
             }
             return "Xpense/" + fileName + ".dat";
+        }
+
+        string Base64Encode(string text)
+        {
+            byte[] textBytes = Encoding.UTF8.GetBytes(text);
+            return Convert.ToBase64String(textBytes);
+        }
+
+        string Base64Decode(string base64)
+        {
+            byte[] base64Bytes = Convert.FromBase64String(base64);
+            return Encoding.UTF8.GetString(base64Bytes);
         }
     }
 }
