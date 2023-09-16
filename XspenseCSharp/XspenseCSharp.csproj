@@ -10,6 +10,7 @@
   <ItemGroup>
     <None Remove="astack of coin lmao.png" />
     <None Remove="login screen background.jpg" />
+    <None Remove="trending_down_white_24dp.png" />
     <None Remove="xpense_app_icon.jpg" />
     <None Remove="x_splashscreen_sprite.png" />
   </ItemGroup>
@@ -21,6 +22,7 @@
   <ItemGroup>
     <Resource Include="astack of coin lmao.png" />
     <Resource Include="login screen background.jpg" />
+    <Resource Include="trending_down_white_24dp.png" />
     <Resource Include="xpense_app_icon.jpg" />
     <Resource Include="x_splashscreen_sprite.png" />
   </ItemGroup>
