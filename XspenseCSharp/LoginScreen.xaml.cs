@@ -50,7 +50,6 @@ namespace XspenseCSharp
             {
                 if (eachEle.Username.ToLower() == UsernameInputField.Text.ToLower() && eachEle.Password == PasswordInputField.Password)
                 {
-                    MessageBox.Show(eachEle.UserUUID);
                     DashboardScreen dashboardScreen = new DashboardScreen();
                     dashboardScreen.Show();
                     this.Close();
