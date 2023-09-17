@@ -5,6 +5,7 @@ using System.IO.Enumeration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace XspenseCSharp
 {
@@ -46,6 +47,15 @@ namespace XspenseCSharp
         {
             string filePath = Path.Combine(programDataFolderPath, fileNameToPath(fileName));
             return File.Exists(filePath);
+        }
+
+        public void deleteFile(string fileName)
+        {
+            if (IsFileExists(fileName))
+            {
+                string filePath = Path.Combine(programDataFolderPath, fileNameToPath(fileName));
+                File.Delete(filePath);
+            }
         }
 
         private string fileNameToPath(string fileName)

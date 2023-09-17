@@ -53,6 +53,7 @@ namespace XspenseCSharp
                 {
                     NativeFileManager.shared.SaveTextToFile(eachEle.UserUUID, loginHistory_sha256);
                     DashboardScreen dashboardScreen = new DashboardScreen();
+                    dashboardScreen.Show();
                     this.Close();
                     return;
                 }

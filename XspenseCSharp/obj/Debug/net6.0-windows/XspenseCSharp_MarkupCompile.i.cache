@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\SokHeng\source\repos\XpenseCSharp\XspenseCSharp\obj\Debug\net6.0-windows\
+C:\Users\SokHeng\Documents\GitHub\XspenseCSharp\XspenseCSharp\obj\Debug\net6.0-windows\
 XspenseCSharp
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\SokHeng\source\repos\XpenseCSharp\XspenseCSharp\App.xaml
+C:\Users\SokHeng\Documents\GitHub\XspenseCSharp\XspenseCSharp\App.xaml
 51367323700
 
 131435169144
 195-623831500
 AddTransectionScreen.xaml;DashboardScreen.xaml;LoginScreen.xaml;MainWindow.xaml;RegisterScreen.xaml;
 
-True
+False
 

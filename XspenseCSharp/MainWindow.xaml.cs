@@ -18,6 +18,7 @@ namespace XspenseCSharp
 {
     public partial class MainWindow : Window
     {
+        const string loginHistory_sha256 = "857a3aaca61f85901deebacbd675f73f091c85ea52f835dc56ad77b4bae8fb28";
         public MainWindow()
         {
             InitializeComponent();
@@ -39,9 +40,18 @@ namespace XspenseCSharp
 
         public void EndThisScreen()
         {
-            LoginScreen loginScreen = new LoginScreen();
-            loginScreen.Show();
-            this.Close();
+            if (NativeFileManager.shared.IsFileExists(loginHistory_sha256))
+            {
+                DashboardScreen dashboardScreen = new DashboardScreen();
+                dashboardScreen.Show();
+                this.Close();
+            }
+            else
+            {
+                LoginScreen loginScreen = new LoginScreen();
+                loginScreen.Show();
+                this.Close();
+            }
         }
 
         void RisingProgressValue()

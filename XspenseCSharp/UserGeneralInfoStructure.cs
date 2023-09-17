@@ -6,42 +6,57 @@ using System.Threading.Tasks;
 
 namespace XspenseCSharp
 {
-    enum TransectionTypeEnum
+    public enum TransectionTypeEnum
     {
         expense, income
     }
-    struct UserGeneralInfoStruct
+    public enum PickDateEnum
+    {
+        today, yesterday, this_week, this_month, this_year
+    }
+    public struct UserGeneralInfoStruct
     {
         public List<WalletStruct> wallet { get; set; }
         public List<CategoryStruct> category { get; set; }
         public List<CurrencyStruct> currency { get; set; }
     }
-    struct TransectionStruct
+    public struct TransectionStruct
     {
         public TransectionTypeEnum type { get; set; }
         public string uuid { get; set; }
         public DateTime date { get; set; }
         public float price { get; set; }
-        public CategoryStruct category { get; set; }
+        public string category_id { get; set; }
+        public string wallet_id {  get; set; }
     }
-    struct CategoryStruct
+    public struct CategoryStruct
     {
         public string uuid { get; set; }
         public string name { get; set; }
         public string description { get; set; }
     }
-    struct CurrencyStruct
+    public struct CurrencyStruct
     {
         public string uuid { get; set; }
         public string full_name { get; set; }
         public string code_name { get; set; }
         public float exchange_rate { get; set; }
     }
-    struct WalletStruct
+    public struct WalletStruct
     {
         public string uuid { get; set; }
         public string name { get; set; }
-        public CurrencyStruct currency { get; set; }
+        public string currency_id { get; set; }
         public List<TransectionStruct> transection { get; set; }
+    }
+
+    public struct TransectionPresentStruct
+    {
+        public TransectionTypeEnum type { get; set; }
+        public float price { get; set; }
+        public string currency { get; set; }
+        public string wallet {  get; set; }
+        public DateTime date { get; set; }
+        public string category { get; set; }
     }
 }
