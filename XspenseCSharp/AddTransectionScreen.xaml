@@ -1,0 +1,22 @@
+﻿<Window x:Class="XspenseCSharp.AddTransectionScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XspenseCSharp"
+        mc:Ignorable="d"
+        Title="Add Transection" Height="450" Width="300" Background="#FF1F1F1F" MinHeight="450" MinWidth="300" Icon="/xpense_app_icon.jpg" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label Content="Add Transection" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold" FontFamily="Bahnschrift SemiBold" Foreground="White"/>
+        <TextBox Margin="10,85,10,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Price :" Margin="10,51,10,0" VerticalAlignment="Top" Foreground="White" FontSize="18" FontFamily="Segoe UI Semibold"/>
+        <ComboBox Margin="10,150,10,0" VerticalAlignment="Top" FontSize="18"/>
+        <Button Content="Button" Margin="10,0,10,10" FontSize="18" FontFamily="Bahnschrift SemiBold" Background="#FF0084FF" Foreground="White" Height="37" VerticalAlignment="Bottom"/>
+        <Label Content="Type :" Margin="10,116,10,0" VerticalAlignment="Top" Foreground="White" FontSize="18" FontFamily="Segoe UI Semibold"/>
+        <Label Content="Wallet :" Margin="10,185,10,0" VerticalAlignment="Top" Foreground="White" FontSize="18" FontFamily="Segoe UI Semibold"/>
+        <ComboBox Margin="10,219,10,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Date :" Margin="10,254,10,0" VerticalAlignment="Top" Foreground="White" FontSize="18" FontFamily="Segoe UI Semibold"/>
+        <DatePicker Margin="10,288,10,0" VerticalAlignment="Top" FontSize="18"/>
+
+    </Grid>
+</Window>

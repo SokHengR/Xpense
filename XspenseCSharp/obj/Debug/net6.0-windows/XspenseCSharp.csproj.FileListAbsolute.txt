@@ -56,3 +56,5 @@ C:\Users\SokHeng\source\repos\XpenseCSharp\XspenseCSharp\obj\Debug\net6.0-window
 C:\Users\SokHeng\source\repos\XpenseCSharp\XspenseCSharp\obj\Debug\net6.0-windows\DashboardScreen.baml
 C:\Users\SokHeng\Documents\GitHub\XspenseCSharp\XspenseCSharp\obj\Debug\net6.0-windows\DashboardScreen.g.cs
 C:\Users\SokHeng\Documents\GitHub\XspenseCSharp\XspenseCSharp\obj\Debug\net6.0-windows\DashboardScreen.baml
+C:\Users\SokHeng\source\repos\XpenseCSharp\XspenseCSharp\obj\Debug\net6.0-windows\AddTransectionScreen.g.cs
+C:\Users\SokHeng\source\repos\XpenseCSharp\XspenseCSharp\obj\Debug\net6.0-windows\AddTransectionScreen.baml

@@ -18,6 +18,7 @@ namespace XspenseCSharp
     {
         UserLoginDataContainer userLogin;
         const string userAccount_sha256 = "375424f41e3db3a58eb56e7b78f2d99d3a91e7d3bcb9cea851f00369de51253a";
+        const string loginHistory_sha256 = "857a3aaca61f85901deebacbd675f73f091c85ea52f835dc56ad77b4bae8fb28";
         public LoginScreen()
         {
             InitializeComponent();
@@ -50,8 +51,8 @@ namespace XspenseCSharp
             {
                 if (eachEle.Username.ToLower() == UsernameInputField.Text.ToLower() && eachEle.Password == PasswordInputField.Password)
                 {
+                    NativeFileManager.shared.SaveTextToFile(eachEle.UserUUID, loginHistory_sha256);
                     DashboardScreen dashboardScreen = new DashboardScreen();
-                    dashboardScreen.Show();
                     this.Close();
                     return;
                 }

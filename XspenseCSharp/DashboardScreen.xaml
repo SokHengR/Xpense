@@ -25,13 +25,13 @@
                 <Image HorizontalAlignment="Left" Height="30" Margin="10,0,0,0" Width="30" VerticalAlignment="Center" Source="/trending_up_white.png"/>
                 <Label Content="Income" HorizontalAlignment="Left" Margin="45,0,0,0" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" FontFamily="Bahnschrift" Foreground="White"/>
             </Grid>
-            <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,196,10,10"/>
+            <ListBox x:Name="TransectionTableView" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,196,10,10" Background="#FF464646" Foreground="White"/>
         </Grid>
         <Button Content="Log out" Margin="0,0,10,105" VerticalAlignment="Bottom" FontFamily="Bahnschrift SemiBold" FontWeight="Bold" FontSize="14" Foreground="White" Background="#FFE20000" HorizontalAlignment="Right" Width="168"/>
         <Button Content="Wallets" Margin="0,0,10,183" FontFamily="Bahnschrift SemiBold" FontWeight="Bold" FontSize="14" Foreground="White" Background="#FF6B6B6B" HorizontalAlignment="Right" Width="168" Height="21" VerticalAlignment="Bottom"/>
         <Button Content="Currencies" Margin="0,0,10,157" FontFamily="Bahnschrift SemiBold" FontWeight="Bold" FontSize="14" Foreground="White" Background="#FF6B6B6B" HorizontalAlignment="Right" Width="168" Height="21" VerticalAlignment="Bottom"/>
         <Button Content="Categories" Margin="0,0,10,131" FontFamily="Bahnschrift SemiBold" FontWeight="Bold" FontSize="14" Foreground="White" Background="#FF6B6B6B" HorizontalAlignment="Right" Width="168" Height="21" VerticalAlignment="Bottom"/>
-        <Button Content="Add" Margin="0,78,10,0" FontFamily="Bahnschrift SemiBold" FontWeight="Bold" FontSize="14" Foreground="White" Background="#FF00027F" HorizontalAlignment="Right" Width="168" Height="21" VerticalAlignment="Top"/>
+        <Button x:Name="AddButton" Content="Add" Margin="0,78,10,0" FontFamily="Bahnschrift SemiBold" FontWeight="Bold" FontSize="14" Foreground="White" Background="#FF00027F" HorizontalAlignment="Right" Width="168" Height="21" VerticalAlignment="Top" Click="AddButton_Click"/>
         <ComboBox Margin="0,51,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="168"/>
         <Button Content="Edit" Margin="0,130,10,0" FontFamily="Bahnschrift SemiBold" FontWeight="Bold" FontSize="14" Foreground="White" Background="#FF00861B" HorizontalAlignment="Right" Width="168" Height="21" VerticalAlignment="Top"/>
         <Button Content="Delete" Margin="0,104,10,0" FontFamily="Bahnschrift SemiBold" FontWeight="Bold" FontSize="14" Foreground="White" Background="#FF840000" HorizontalAlignment="Right" Width="168" Height="21" VerticalAlignment="Top"/>

@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="AddTransectionScreen.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="DashboardScreen.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -18,6 +21,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="AddTransectionScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="DashboardScreen.xaml">
       <SubType>Designer</SubType>
     </Page>
