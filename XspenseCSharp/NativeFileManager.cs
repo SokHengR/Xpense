@@ -43,6 +43,12 @@ namespace XspenseCSharp
             }
             return Base64Decode(text);
         }
+        public string GetUserToken()
+        {
+            const string loginHistory_sha256 = "857a3aaca61f85901deebacbd675f73f091c85ea52f835dc56ad77b4bae8fb28";
+            string resultReturn = ReadTextFromFile(loginHistory_sha256);
+            return resultReturn;
+        }
         public bool IsFileExists(string fileName)
         {
             string filePath = Path.Combine(programDataFolderPath, fileNameToPath(fileName));

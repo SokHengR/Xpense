@@ -29,7 +29,7 @@ namespace XspenseCSharp
         public DashboardScreen()
         {
             InitializeComponent();
-            user_token = NativeFileManager.shared.ReadTextFromFile(loginHistory_sha256);
+            user_token = NativeFileManager.shared.GetUserToken();
             if (user_token == "nil")
             {
                 MessageBox.Show("User Not Found");
@@ -54,6 +54,9 @@ namespace XspenseCSharp
         public void refreshData()
         {
             userWallet = userWalletManager.loadStructFromFile(user_token);
+
+            TotalExpenseLabel.Content = userWalletManager.getTotalExpense(userWallet);
+            TotalIncomeLabel.Content = userWalletManager.getTotalIncome(userWallet);
 
             List<TransectionStruct> tempTransetions = userWalletManager.getTransectionFilter(userWallet, dateComboBoxToEnum());
             transectionPresent = userWalletManager.transectionToPresent( userWallet, tempTransetions);
@@ -100,6 +103,38 @@ namespace XspenseCSharp
         private void DateCamboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             refreshData();
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            int selectIndex = TransectionTableView.SelectedIndex;
+            if (selectIndex < 0)
+            {
+                return;
+            }
+
+            MessageBoxResult result = MessageBox.Show("Are you sure?", "You are about to delete a transection", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                List<TransectionStruct> tempTransetions = userWalletManager.getTransectionFilter(userWallet, dateComboBoxToEnum());
+                userWalletManager.deleteTransection(userWallet, tempTransetions[selectIndex]);
+                refreshData();
+            }
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            int selectIndex = TransectionTableView.SelectedIndex;
+            if (selectIndex < 0)
+            {
+                return;
+            }
+
+            List<TransectionStruct> tempTransetions = userWalletManager.getTransectionFilter(userWallet, dateComboBoxToEnum());
+            EditTransectionScreen editTransectionScreen = new EditTransectionScreen(userWallet, tempTransetions[selectIndex]);
+            editTransectionScreen.theDashboard = this;
+            editTransectionScreen.ShowDialog();
         }
     }
 }

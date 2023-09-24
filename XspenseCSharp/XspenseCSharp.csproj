@@ -25,4 +25,10 @@
     <Resource Include="x_splashscreen_sprite.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="EditTransectionScreen.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>

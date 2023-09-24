@@ -56,19 +56,19 @@ namespace XspenseCSharp
         private void AddTransectionButton_Click(object sender, RoutedEventArgs e)
         {
             float priceNumber;
-            if (PricingInputField == null || TypeComboBox.SelectedIndex <= -1 || WalletComboBox.SelectedIndex <= -1)
+            if (PricingInputField == null || TypeComboBox.SelectedIndex <= -1 || WalletComboBox.SelectedIndex <= -1 || CategoryComboBox.SelectedIndex <= -1)
             {
-                MessageBox.Show("Not enough info to create transection");
+                MessageBox.Show("Not enough info to create transection.");
                 return;
             }
             if (!float.TryParse(PricingInputField.Text, out priceNumber))
             {
-                MessageBox.Show("Invalid Price");
+                MessageBox.Show("Invalid Price.\nPrice must be number.");
                 return;
             }
             if (priceNumber <= 0)
             {
-                MessageBox.Show("Price must be more than 0");
+                MessageBox.Show("Invalid Price.\nPrice must be more than 0.");
                 return;
             }
 

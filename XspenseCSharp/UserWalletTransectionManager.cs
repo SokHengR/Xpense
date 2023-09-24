@@ -97,20 +97,51 @@ namespace XspenseCSharp
         }
 
 
+        // totally ------------------------
+        public float getTotalIncome(UserGeneralInfoStruct originalStruct)
+        {
+            float totalIncome = 0;
+            for (int i = 0; i < originalStruct.wallet.Count; i++)
+            {
+                foreach (TransectionStruct eachTransection in originalStruct.wallet[i].transection)
+                {
+                    if (eachTransection.type == TransectionTypeEnum.income)
+                    {
+                        totalIncome += eachTransection.price;
+                    }
+                }
+            }
+            return totalIncome;
+        }
+        public float getTotalExpense(UserGeneralInfoStruct originalStruct)
+        {
+            float totalExpense = 0;
+            for (int i = 0; i < originalStruct.wallet.Count; i++)
+            {
+                foreach (TransectionStruct eachTransection in originalStruct.wallet[i].transection)
+                {
+                    if (eachTransection.type == TransectionTypeEnum.expense)
+                    {
+                        totalExpense += eachTransection.price;
+                    }
+                }
+            }
+            return totalExpense;
+        }
         // wallet -------------------------
-        public UserGeneralInfoStruct deleteWallet(UserGeneralInfoStruct originalStruct, WalletStruct theWallet)
+        public void deleteWallet(UserGeneralInfoStruct originalStruct, WalletStruct theWallet)
         {
             UserGeneralInfoStruct newStruct = originalStruct;
             newStruct.wallet.Remove(theWallet);
-            return newStruct;
+            saveStructToFile(newStruct, fileManagerNative.GetUserToken());
         }
-        public UserGeneralInfoStruct addWallet(UserGeneralInfoStruct originalStruct, WalletStruct theWallet)
+        public void addWallet(UserGeneralInfoStruct originalStruct, WalletStruct theWallet)
         {
             UserGeneralInfoStruct newStruct = originalStruct;
             newStruct.wallet.Add(theWallet);
-            return newStruct;
+            saveStructToFile(newStruct, fileManagerNative.GetUserToken());
         }
-        public UserGeneralInfoStruct editWallet(UserGeneralInfoStruct originalStruct, WalletStruct theWallet)
+        public void editWallet(UserGeneralInfoStruct originalStruct, WalletStruct theWallet)
         {
             UserGeneralInfoStruct newStruct = originalStruct;
             for (int i = 0; i < originalStruct.wallet.Count; i++)
@@ -118,34 +149,54 @@ namespace XspenseCSharp
                 if (originalStruct.wallet[i].uuid == theWallet.uuid)
                 {
                     newStruct.wallet[i] = theWallet;
+                    break;
                 }
             }
-            return newStruct;
+            saveStructToFile(newStruct, fileManagerNative.GetUserToken());
         }
         // transection -------------------------
-        public WalletStruct deleteTransection(WalletStruct originalStruct, TransectionStruct theTransection)
+        public void deleteTransection(UserGeneralInfoStruct originalStruct, TransectionStruct theTransection)
         {
-            WalletStruct newStruct = originalStruct;
-            newStruct.transection.Remove(theTransection);
-            return newStruct;
-        }
-        public WalletStruct addTransection(WalletStruct originalStruct, TransectionStruct theTransection)
-        {
-            WalletStruct newStruct = originalStruct;
-            newStruct.transection.Add(theTransection);
-            return newStruct;
-        }
-        public WalletStruct editTransection(WalletStruct originalStruct, TransectionStruct theTransection)
-        {
-            WalletStruct newStruct = originalStruct;
-            for (int i = 0; i < originalStruct.transection.Count; i++)
+            UserGeneralInfoStruct newStruct = originalStruct;
+            for (int i = 0; i < originalStruct.wallet.Count; i++)
             {
-                if (originalStruct.transection[i].uuid == theTransection.uuid)
+                if (originalStruct.wallet[i].uuid == theTransection.wallet_id)
                 {
-                    newStruct.transection[i] = theTransection;
+                    newStruct.wallet[i].transection.Remove(theTransection);
+                    break;
                 }
             }
-            return newStruct;
+            saveStructToFile(newStruct, fileManagerNative.GetUserToken());
+        }
+        public void addTransection(UserGeneralInfoStruct originalStruct, TransectionStruct theTransection)
+        {
+            UserGeneralInfoStruct newStruct = originalStruct;
+            for (int i = 0; i < originalStruct.wallet.Count; i++)
+            {
+                if (originalStruct.wallet[i].uuid == theTransection.wallet_id)
+                {
+                    newStruct.wallet[i].transection.Add(theTransection);
+                    break;
+                }
+            }
+            saveStructToFile(newStruct, fileManagerNative.GetUserToken());
+        }
+        public void editTransection(UserGeneralInfoStruct originalStruct, TransectionStruct theTransection)
+        {
+            UserGeneralInfoStruct newStruct = originalStruct;
+            for (int i = 0; i < originalStruct.wallet.Count; i++)
+            {
+                if (originalStruct.wallet[i].uuid == theTransection.wallet_id)
+                {
+                    for (int j = 0; j < originalStruct.wallet[i].transection.Count; j++)
+                    {
+                        newStruct.wallet[i].transection[j] = theTransection;
+                        break;
+                    }
+                    break;
+                }
+            }
+            saveStructToFile(newStruct, fileManagerNative.GetUserToken());
         }
         public List<TransectionStruct> getTransectionFilter(UserGeneralInfoStruct userGeneral, PickDateEnum filterType)
         {
