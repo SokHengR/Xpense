@@ -64,20 +64,24 @@ namespace XspenseCSharp
             foreach (TransectionStruct eachTransection in transectionList)
             {
                 TransectionPresentStruct tempPresentStruct = new TransectionPresentStruct();
-                tempPresentStruct.type = eachTransection.type;
-                tempPresentStruct.price = eachTransection.price;
+                tempPresentStruct.uuid = eachTransection.uuid;
+                tempPresentStruct.wallet_id = eachTransection.wallet_id;
+                tempPresentStruct.category_id = eachTransection.category_id;
+                tempPresentStruct.Type = eachTransection.type;
+                tempPresentStruct.Price = eachTransection.price;
+
                 // find wallet
                 foreach (WalletStruct eachWallet in userGeneral.wallet)
                 {
                     if (eachWallet.uuid == eachTransection.wallet_id)
                     {
-                        tempPresentStruct.wallet = eachWallet.name;
+                        tempPresentStruct.Wallet = eachWallet.name;
                         // find currency
                         foreach (CurrencyStruct eachCurrency in userGeneral.currency)
                         {
                             if (eachCurrency.uuid == eachWallet.currency_id)
                             {
-                                tempPresentStruct.currency = eachCurrency.code_name;
+                                tempPresentStruct.Currency = eachCurrency.code_name;
                             }
                         }
                     }
@@ -87,10 +91,10 @@ namespace XspenseCSharp
                 {
                     if (eachCategory.uuid == eachTransection.category_id)
                     {
-                        tempPresentStruct.category = eachCategory.name;
+                        tempPresentStruct.Category = eachCategory.name;
                     }
                 }
-                tempPresentStruct.date = eachTransection.date;
+                tempPresentStruct.Date = eachTransection.date;
                 presentStructList.Add(tempPresentStruct);
             }
             return presentStructList;
@@ -155,14 +159,30 @@ namespace XspenseCSharp
             saveStructToFile(newStruct, fileManagerNative.GetUserToken());
         }
         // transection -------------------------
-        public void deleteTransection(UserGeneralInfoStruct originalStruct, TransectionStruct theTransection)
+        public void deleteTransection(UserGeneralInfoStruct originalStruct, TransectionPresentStruct theTransection)
         {
             UserGeneralInfoStruct newStruct = originalStruct;
+            TransectionStruct originalTransection = new TransectionStruct();
+
+            // find original transection 
             for (int i = 0; i < originalStruct.wallet.Count; i++)
             {
-                if (originalStruct.wallet[i].uuid == theTransection.wallet_id)
+                foreach (TransectionStruct eachTransection in originalStruct.wallet[i].transection)
                 {
-                    newStruct.wallet[i].transection.Remove(theTransection);
+                    if (eachTransection.uuid == theTransection.uuid)
+                    {
+                        originalTransection = eachTransection;
+                        break;
+                    }
+                }
+            }
+
+            // remove transection from the chain
+            for (int i = 0; i < originalStruct.wallet.Count; i++)
+            {
+                if (originalStruct.wallet[i].uuid == originalTransection.wallet_id)
+                {
+                    newStruct.wallet[i].transection.Remove(originalTransection);
                     break;
                 }
             }
@@ -181,18 +201,40 @@ namespace XspenseCSharp
             }
             saveStructToFile(newStruct, fileManagerNative.GetUserToken());
         }
-        public void editTransection(UserGeneralInfoStruct originalStruct, TransectionStruct theTransection)
+        public void editTransection(UserGeneralInfoStruct originalStruct, TransectionPresentStruct theTransection)
         {
             UserGeneralInfoStruct newStruct = originalStruct;
+            TransectionStruct originalTransection = new TransectionStruct();
+            int walletIndex = 0;
+
+            // find original transection 
             for (int i = 0; i < originalStruct.wallet.Count; i++)
             {
-                if (originalStruct.wallet[i].uuid == theTransection.wallet_id)
+                foreach (TransectionStruct eachTransection in originalStruct.wallet[i].transection)
                 {
-                    for (int j = 0; j < originalStruct.wallet[i].transection.Count; j++)
+                    if (eachTransection.uuid == theTransection.uuid)
                     {
-                        newStruct.wallet[i].transection[j] = theTransection;
+                        walletIndex = i;
+                        originalTransection = eachTransection;
                         break;
                     }
+                }
+            }
+
+            // changing original data
+            originalTransection.type = theTransection.Type;
+            originalTransection.uuid = theTransection.uuid;
+            originalTransection.date = theTransection.Date;
+            originalTransection.price = theTransection.Price;
+            originalTransection.category_id = theTransection.category_id;
+            originalTransection.wallet_id = theTransection.wallet_id;
+
+            // update transection in the chain
+            for (int i = 0; i < originalStruct.wallet[walletIndex].transection.Count; i++)
+            {
+                if (originalStruct.wallet[walletIndex].transection[i].uuid == originalTransection.uuid)
+                {
+                    newStruct.wallet[walletIndex].transection[i] = originalTransection;
                     break;
                 }
             }

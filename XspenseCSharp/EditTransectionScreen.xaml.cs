@@ -24,10 +24,10 @@ namespace XspenseCSharp
         UserGeneralInfoStruct userGeneralPublic;
         const string loginHistory_sha256 = "857a3aaca61f85901deebacbd675f73f091c85ea52f835dc56ad77b4bae8fb28";
         string user_token = "nil";
-        TransectionStruct transectForEditPublic = new TransectionStruct();
+        TransectionPresentStruct transectForEditPublic = new TransectionPresentStruct();
         UserWalletTransectionManager userWalletManager = UserWalletTransectionManager.shared;
 
-        public EditTransectionScreen(UserGeneralInfoStruct userGeneral, TransectionStruct transectionForEdit)
+        public EditTransectionScreen(UserGeneralInfoStruct userGeneral, TransectionPresentStruct transectionForEdit)
         {
             InitializeComponent();
             userGeneralPublic = userGeneral;
@@ -35,11 +35,11 @@ namespace XspenseCSharp
             user_token = NativeFileManager.shared.ReadTextFromFile(loginHistory_sha256);
             transectForEditPublic = transectionForEdit;
 
-            PricingInputField.Text = transectionForEdit.price.ToString();
-            TransectionDatePicker.SelectedDate = transectionForEdit.date;
+            PricingInputField.Text = transectionForEdit.Price.ToString();
+            TransectionDatePicker.SelectedDate = transectionForEdit.Date;
             TypeComboBox.Items.Add("Expense");
             TypeComboBox.Items.Add("Income");
-            TypeComboBox.SelectedIndex = transectionForEdit.type == TransectionTypeEnum.expense ? 0 : 1;
+            TypeComboBox.SelectedIndex = transectionForEdit.Type == TransectionTypeEnum.expense ? 0 : 1;
 
             // find and add wallet --------
             foreach (WalletStruct eachWallet in userGeneral.wallet)
@@ -60,7 +60,7 @@ namespace XspenseCSharp
                 CategoryComboBox.Items.Add(eachCategory.name);
             }
 
-            // find and apply wallet to camboBox --------
+            // find and apply wallet to [camboBox] --------
             for (int i = 0; i < userGeneral.wallet.Count; i++)
             {
                 if (userGeneral.wallet[i].uuid == transectionForEdit.wallet_id)
@@ -69,7 +69,7 @@ namespace XspenseCSharp
                     break;
                 }
             }
-            // find and apply category to camboBox --------
+            // find and apply category to [camboBox] --------
             for (int i = 0; i < userGeneral.category.Count; i++)
             {
                 if (userGeneral.category[i].uuid == transectionForEdit.category_id)
@@ -99,9 +99,9 @@ namespace XspenseCSharp
                 return;
             }
 
-            transectForEditPublic.type = TypeComboBox.SelectedIndex == 0 ? TransectionTypeEnum.expense : TransectionTypeEnum.income;
-            transectForEditPublic.date = (DateTime)TransectionDatePicker.SelectedDate;
-            transectForEditPublic.price = priceNumber;
+            transectForEditPublic.Type = TypeComboBox.SelectedIndex == 0 ? TransectionTypeEnum.expense : TransectionTypeEnum.income;
+            transectForEditPublic.Date = (DateTime)TransectionDatePicker.SelectedDate;
+            transectForEditPublic.Price = priceNumber;
             transectForEditPublic.category_id = userGeneralPublic.category[CategoryComboBox.SelectedIndex].uuid;
             transectForEditPublic.wallet_id = userGeneralPublic.wallet[WalletComboBox.SelectedIndex].uuid;
 

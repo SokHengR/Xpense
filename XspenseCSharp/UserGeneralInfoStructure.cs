@@ -52,11 +52,14 @@ namespace XspenseCSharp
 
     public struct TransectionPresentStruct
     {
-        public TransectionTypeEnum type { get; set; }
-        public float price { get; set; }
-        public string currency { get; set; }
-        public string wallet {  get; set; }
-        public DateTime date { get; set; }
-        public string category { get; set; }
+        public TransectionTypeEnum Type { get; set; }
+        public string uuid { get; set; }
+        public string wallet_id { get; set; }
+        public string category_id { get; set; }
+        public float Price { get; set; }
+        public string Currency { get; set; }
+        public string Wallet {  get; set; }
+        public DateTime Date { get; set; }
+        public string Category { get; set; }
     }
 }

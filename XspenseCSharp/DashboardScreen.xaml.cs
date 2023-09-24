@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -42,6 +43,7 @@ namespace XspenseCSharp
             DateCamboBox.Items.Add("This Year");
             DateCamboBox.SelectedIndex = 0;
             refreshData();
+            AttempHideColumn();
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -61,6 +63,29 @@ namespace XspenseCSharp
             List<TransectionStruct> tempTransetions = userWalletManager.getTransectionFilter(userWallet, dateComboBoxToEnum());
             transectionPresent = userWalletManager.transectionToPresent( userWallet, tempTransetions);
             TransectionTableView.ItemsSource = transectionPresent;
+            HideColumn();
+        }
+        private void AttempHideColumn()
+        {
+            if (TransectionTableView.Columns.Count > 0)
+            {
+                HideColumn();
+            }
+            else
+            {
+                _ = Invoke(AttempHideColumn, 1);
+            }
+        }
+        private void HideColumn()
+        {
+            if (TransectionTableView.Columns.Count > 0)
+            {
+                for (int i = 1; i <= 3; i++)
+                {
+                    DataGridColumn columnTV = TransectionTableView.Columns[i];
+                    columnTV.Visibility = Visibility.Collapsed;
+                }
+            }
         }
 
         private PickDateEnum dateComboBoxToEnum()
@@ -117,8 +142,7 @@ namespace XspenseCSharp
 
             if (result == MessageBoxResult.Yes)
             {
-                List<TransectionStruct> tempTransetions = userWalletManager.getTransectionFilter(userWallet, dateComboBoxToEnum());
-                userWalletManager.deleteTransection(userWallet, tempTransetions[selectIndex]);
+                userWalletManager.deleteTransection(userWallet, (TransectionPresentStruct)TransectionTableView.SelectedItem);
                 refreshData();
             }
         }
@@ -131,10 +155,14 @@ namespace XspenseCSharp
                 return;
             }
 
-            List<TransectionStruct> tempTransetions = userWalletManager.getTransectionFilter(userWallet, dateComboBoxToEnum());
-            EditTransectionScreen editTransectionScreen = new EditTransectionScreen(userWallet, tempTransetions[selectIndex]);
+            EditTransectionScreen editTransectionScreen = new EditTransectionScreen(userWallet, (TransectionPresentStruct)TransectionTableView.SelectedItem);
             editTransectionScreen.theDashboard = this;
             editTransectionScreen.ShowDialog();
+        }
+        public async Task Invoke(Action function, int timeInSeconds)
+        {
+            await Task.Delay(timeInSeconds * 1000);
+            function();
         }
     }
 }
