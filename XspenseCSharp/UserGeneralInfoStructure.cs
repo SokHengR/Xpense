@@ -8,7 +8,11 @@ namespace XspenseCSharp
 {
     public enum TransectionTypeEnum
     {
-        expense, income
+        Expense, Income
+    }
+    public enum WalletViewTypeEnum
+    {
+        Category, Wallet, Currency
     }
     public enum PickDateEnum
     {
@@ -27,7 +31,7 @@ namespace XspenseCSharp
         public DateTime date { get; set; }
         public float price { get; set; }
         public string category_id { get; set; }
-        public string wallet_id {  get; set; }
+        public string wallet_id { get; set; }
     }
     public struct CategoryStruct
     {
@@ -49,6 +53,14 @@ namespace XspenseCSharp
         public string currency_id { get; set; }
         public List<TransectionStruct> transection { get; set; }
     }
+    public struct WalletPresentStruct
+    {
+        public string uuid { get; set; }
+        public string Name { get; set; }
+        public string currency_id { get; set; }
+        public string Currency { get; set; }
+        public string Exchange { get; set; }
+    }
 
     public struct TransectionPresentStruct
     {
@@ -58,7 +70,7 @@ namespace XspenseCSharp
         public string category_id { get; set; }
         public float Price { get; set; }
         public string Currency { get; set; }
-        public string Wallet {  get; set; }
+        public string Wallet { get; set; }
         public DateTime Date { get; set; }
         public string Category { get; set; }
     }

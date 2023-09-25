@@ -109,7 +109,7 @@ namespace XspenseCSharp
             {
                 foreach (TransectionStruct eachTransection in originalStruct.wallet[i].transection)
                 {
-                    if (eachTransection.type == TransectionTypeEnum.income)
+                    if (eachTransection.type == TransectionTypeEnum.Income)
                     {
                         totalIncome += eachTransection.price;
                     }
@@ -124,7 +124,7 @@ namespace XspenseCSharp
             {
                 foreach (TransectionStruct eachTransection in originalStruct.wallet[i].transection)
                 {
-                    if (eachTransection.type == TransectionTypeEnum.expense)
+                    if (eachTransection.type == TransectionTypeEnum.Expense)
                     {
                         totalExpense += eachTransection.price;
                     }
@@ -133,6 +133,28 @@ namespace XspenseCSharp
             return totalExpense;
         }
         // wallet -------------------------
+        public List<WalletPresentStruct> WalletToWalletPresent(UserGeneralInfoStruct originalStruct)
+        {
+            List<WalletPresentStruct> tempWalletList = new List<WalletPresentStruct>();
+            foreach (WalletStruct eachWallet in originalStruct.wallet)
+            {
+                WalletPresentStruct newWalletPresent = new WalletPresentStruct();
+                newWalletPresent.uuid = eachWallet.uuid;
+                newWalletPresent.Name = eachWallet.name;
+                newWalletPresent.currency_id = eachWallet.currency_id;
+                foreach (CurrencyStruct eachCurrency in originalStruct.currency)
+                {
+                    if (eachCurrency.uuid == eachWallet.currency_id)
+                    {
+                        newWalletPresent.Currency = eachCurrency.code_name;
+                        newWalletPresent.Exchange = eachCurrency.exchange_rate.ToString();
+                        break;
+                    }
+                }
+                tempWalletList.Add(newWalletPresent);
+            }
+            return tempWalletList;
+        }
         public void deleteWallet(UserGeneralInfoStruct originalStruct, WalletStruct theWallet)
         {
             UserGeneralInfoStruct newStruct = originalStruct;

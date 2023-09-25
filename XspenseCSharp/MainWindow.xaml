@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XspenseCSharp"
         mc:Ignorable="d"
-        Title="SplashScreen" Height="392" Width="644" ResizeMode="NoResize" Icon="/xpense_app_icon.jpg" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        Title="SplashScreen" Height="392" Width="644" ResizeMode="NoResize" Icon="/xpense_app_icon.png" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid Background="Black">
         <Image Source="/x_splashscreen_sprite.png" HorizontalAlignment="Left" Width="347" Margin="297,0,0,0"/>
         <Label Content="Xpense&#xD;&#xA;" HorizontalAlignment="Left" Margin="46,56,0,0" Foreground="White" Width="264" Height="108" VerticalAlignment="Top" FontSize="72"/>

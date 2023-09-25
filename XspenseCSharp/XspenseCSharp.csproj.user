@@ -19,6 +19,9 @@
     <Compile Update="RegisterScreen.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="WalletViewController.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="EditTransectionScreen.xaml">
@@ -37,6 +40,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="RegisterScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="WalletViewController.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

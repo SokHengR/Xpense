@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XspenseCSharp"
         mc:Ignorable="d"
-        Title="Dashboard" Height="450" Width="800" Background="#FF292929" MinWidth="750" MinHeight="450" Icon="/xpense_app_icon.jpg" WindowStartupLocation="CenterScreen">
+        Title="Dashboard" Height="450" Width="800" Background="#FF292929" MinWidth="750" MinHeight="450" Icon="/xpense_app_icon.png" WindowStartupLocation="CenterScreen">
     <Grid>
         <Image Height="100" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100" Source="/x_splashscreen_sprite.png"/>
         <Grid Margin="0,0,183,0" Background="Black">
@@ -37,7 +37,7 @@
             <DataGrid x:Name="TransectionTableView" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,125,10,10" FontFamily="Palatino Linotype" FontSize="16" IsReadOnly="True"/>
         </Grid>
         <Button x:Name="LogoutButton" Content="Log out" Margin="0,0,10,105" VerticalAlignment="Bottom" FontFamily="Bahnschrift SemiBold" FontWeight="Bold" FontSize="14" Foreground="White" Background="#FFE20000" HorizontalAlignment="Right" Width="168" Click="LogoutButton_Click"/>
-        <Button Content="Wallets" Margin="0,0,10,183" FontFamily="Bahnschrift SemiBold" FontWeight="Bold" FontSize="14" Foreground="White" Background="#FF6B6B6B" HorizontalAlignment="Right" Width="168" Height="21" VerticalAlignment="Bottom"/>
+        <Button x:Name="WalletButton" Content="Wallets" Margin="0,0,10,183" FontFamily="Bahnschrift SemiBold" FontWeight="Bold" FontSize="14" Foreground="White" Background="#FF6B6B6B" HorizontalAlignment="Right" Width="168" Height="21" VerticalAlignment="Bottom" Click="WalletButton_Click"/>
         <Button Content="Currencies" Margin="0,0,10,157" FontFamily="Bahnschrift SemiBold" FontWeight="Bold" FontSize="14" Foreground="White" Background="#FF6B6B6B" HorizontalAlignment="Right" Width="168" Height="21" VerticalAlignment="Bottom"/>
         <Button Content="Categories" Margin="0,0,10,131" FontFamily="Bahnschrift SemiBold" FontWeight="Bold" FontSize="14" Foreground="White" Background="#FF6B6B6B" HorizontalAlignment="Right" Width="168" Height="21" VerticalAlignment="Bottom"/>
         <Button x:Name="AddButton" Content="Add" Margin="0,78,10,0" FontFamily="Bahnschrift SemiBold" FontWeight="Bold" FontSize="14" Foreground="White" Background="#FF00027F" HorizontalAlignment="Right" Width="168" Height="21" VerticalAlignment="Top" Click="AddButton_Click"/>

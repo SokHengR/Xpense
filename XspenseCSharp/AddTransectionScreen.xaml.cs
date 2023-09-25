@@ -73,7 +73,7 @@ namespace XspenseCSharp
             }
 
             TransectionStruct newTransection = new TransectionStruct();
-            newTransection.type = TypeComboBox.SelectedIndex == 0 ? TransectionTypeEnum.expense : TransectionTypeEnum.income;
+            newTransection.type = TypeComboBox.SelectedIndex == 0 ? TransectionTypeEnum.Expense : TransectionTypeEnum.Income;
             newTransection.uuid = Guid.NewGuid().ToString();
             newTransection.date = (DateTime)TransectionDatePicker.SelectedDate;
             newTransection.price = priceNumber;

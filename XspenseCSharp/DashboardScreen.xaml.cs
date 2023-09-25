@@ -61,7 +61,7 @@ namespace XspenseCSharp
             TotalIncomeLabel.Content = userWalletManager.getTotalIncome(userWallet);
 
             List<TransectionStruct> tempTransetions = userWalletManager.getTransectionFilter(userWallet, dateComboBoxToEnum());
-            transectionPresent = userWalletManager.transectionToPresent( userWallet, tempTransetions);
+            transectionPresent = userWalletManager.transectionToPresent(userWallet, tempTransetions);
             TransectionTableView.ItemsSource = transectionPresent;
             HideColumn();
         }
@@ -90,7 +90,7 @@ namespace XspenseCSharp
 
         private PickDateEnum dateComboBoxToEnum()
         {
-            switch(DateCamboBox.SelectedIndex)
+            switch (DateCamboBox.SelectedIndex)
             {
                 case 0:
                     return PickDateEnum.today;
@@ -163,6 +163,12 @@ namespace XspenseCSharp
         {
             await Task.Delay(timeInSeconds * 1000);
             function();
+        }
+
+        private void WalletButton_Click(object sender, RoutedEventArgs e)
+        {
+            WalletViewController walletScreen = new WalletViewController(WalletViewTypeEnum.Wallet);
+            walletScreen.Show();
         }
     }
 }

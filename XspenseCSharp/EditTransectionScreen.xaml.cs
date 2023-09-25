@@ -39,7 +39,7 @@ namespace XspenseCSharp
             TransectionDatePicker.SelectedDate = transectionForEdit.Date;
             TypeComboBox.Items.Add("Expense");
             TypeComboBox.Items.Add("Income");
-            TypeComboBox.SelectedIndex = transectionForEdit.Type == TransectionTypeEnum.expense ? 0 : 1;
+            TypeComboBox.SelectedIndex = transectionForEdit.Type == TransectionTypeEnum.Expense ? 0 : 1;
 
             // find and add wallet --------
             foreach (WalletStruct eachWallet in userGeneral.wallet)
@@ -99,7 +99,7 @@ namespace XspenseCSharp
                 return;
             }
 
-            transectForEditPublic.Type = TypeComboBox.SelectedIndex == 0 ? TransectionTypeEnum.expense : TransectionTypeEnum.income;
+            transectForEditPublic.Type = TypeComboBox.SelectedIndex == 0 ? TransectionTypeEnum.Expense : TransectionTypeEnum.Income;
             transectForEditPublic.Date = (DateTime)TransectionDatePicker.SelectedDate;
             transectForEditPublic.Price = priceNumber;
             transectForEditPublic.category_id = userGeneralPublic.category[CategoryComboBox.SelectedIndex].uuid;

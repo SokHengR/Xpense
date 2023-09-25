@@ -62,3 +62,5 @@ C:\Users\SokHeng\Documents\GitHub\XspenseCSharp\XspenseCSharp\obj\Debug\net6.0-w
 C:\Users\SokHeng\Documents\GitHub\XspenseCSharp\XspenseCSharp\obj\Debug\net6.0-windows\AddTransectionScreen.baml
 C:\Users\SokHeng\Documents\GitHub\XspenseCSharp\XspenseCSharp\obj\Debug\net6.0-windows\EditTransectionScreen.g.cs
 C:\Users\SokHeng\Documents\GitHub\XspenseCSharp\XspenseCSharp\obj\Debug\net6.0-windows\EditTransectionScreen.baml
+C:\Users\SokHeng\Documents\GitHub\XspenseCSharp\XspenseCSharp\obj\Debug\net6.0-windows\WalletViewController.g.cs
+C:\Users\SokHeng\Documents\GitHub\XspenseCSharp\XspenseCSharp\obj\Debug\net6.0-windows\WalletViewController.baml
