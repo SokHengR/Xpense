@@ -21,16 +21,16 @@ namespace XspenseCSharp
     public partial class EditTransectionScreen : Window
     {
         public DashboardScreen theDashboard { get; set; }
-        UserGeneralInfoStruct userGeneralPublic;
+        UserGeneralInfoStruct userGeneral;
         const string loginHistory_sha256 = "857a3aaca61f85901deebacbd675f73f091c85ea52f835dc56ad77b4bae8fb28";
         string user_token = "nil";
         TransectionPresentStruct transectForEditPublic = new TransectionPresentStruct();
         UserWalletTransectionManager userWalletManager = UserWalletTransectionManager.shared;
 
-        public EditTransectionScreen(UserGeneralInfoStruct userGeneral, TransectionPresentStruct transectionForEdit)
+        public EditTransectionScreen(TransectionPresentStruct transectionForEdit)
         {
             InitializeComponent();
-            userGeneralPublic = userGeneral;
+            userGeneral = userWalletManager.loadStructFromFile(NativeFileManager.shared.GetUserToken());
 
             user_token = NativeFileManager.shared.ReadTextFromFile(loginHistory_sha256);
             transectForEditPublic = transectionForEdit;
@@ -102,10 +102,10 @@ namespace XspenseCSharp
             transectForEditPublic.Type = TypeComboBox.SelectedIndex == 0 ? TransectionTypeEnum.Expense : TransectionTypeEnum.Income;
             transectForEditPublic.Date = (DateTime)TransectionDatePicker.SelectedDate;
             transectForEditPublic.Price = priceNumber;
-            transectForEditPublic.category_id = userGeneralPublic.category[CategoryComboBox.SelectedIndex].uuid;
-            transectForEditPublic.wallet_id = userGeneralPublic.wallet[WalletComboBox.SelectedIndex].uuid;
+            transectForEditPublic.category_id = userGeneral.category[CategoryComboBox.SelectedIndex].uuid;
+            transectForEditPublic.wallet_id = userGeneral.wallet[WalletComboBox.SelectedIndex].uuid;
 
-            userWalletManager.editTransection(userGeneralPublic, transectForEditPublic);
+            userWalletManager.editTransection(userGeneral, transectForEditPublic);
 
             theDashboard.refreshData();
             this.Close();

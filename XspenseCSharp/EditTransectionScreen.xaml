@@ -14,7 +14,7 @@
         <Button x:Name="EditTransectionButton" Content="Apply Edit" Margin="10,0,10,10" FontSize="18" FontFamily="Bahnschrift SemiBold" Background="#FF0084FF" Foreground="White" Height="37" VerticalAlignment="Bottom" Click="EditTransectionButton_Click"/>
         <Label Content="Type :" Margin="10,116,10,0" VerticalAlignment="Top" Foreground="White" FontSize="18" FontFamily="Segoe UI Semibold"/>
         <Label Content="Wallet :" Margin="10,185,10,0" VerticalAlignment="Top" Foreground="White" FontSize="18" FontFamily="Segoe UI Semibold"/>
-        <ComboBox x:Name="WalletComboBox" Margin="10,219,10,0" VerticalAlignment="Top" FontSize="18"/>
+        <ComboBox x:Name="WalletComboBox" Margin="10,219,10,0" VerticalAlignment="Top" FontSize="18" IsEnabled="False" Foreground="#FFA00000" BorderBrush="{x:Null}" Background="White"/>
         <Label Content="Date :" Margin="10,254,10,0" VerticalAlignment="Top" Foreground="White" FontSize="18" FontFamily="Segoe UI Semibold"/>
         <DatePicker x:Name="TransectionDatePicker" Margin="10,288,10,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="Category :" Margin="10,325,10,0" VerticalAlignment="Top" Foreground="White" FontSize="18" FontFamily="Segoe UI Semibold"/>

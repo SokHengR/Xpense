@@ -25,13 +25,11 @@ namespace XspenseCSharp
         public UserGeneralInfoStruct userWallet;
         public List<TransectionPresentStruct> transectionPresent;
         const string loginHistory_sha256 = "857a3aaca61f85901deebacbd675f73f091c85ea52f835dc56ad77b4bae8fb28";
-        public string user_token = "nil";
 
         public DashboardScreen()
         {
             InitializeComponent();
-            user_token = NativeFileManager.shared.GetUserToken();
-            if (user_token == "nil")
+            if (NativeFileManager.shared.GetUserToken() == "nil")
             {
                 MessageBox.Show("User Not Found");
                 logoutAction();
@@ -48,17 +46,17 @@ namespace XspenseCSharp
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            AddTransectionScreen addTransectionScreen = new AddTransectionScreen(userWallet);
+            AddTransectionScreen addTransectionScreen = new AddTransectionScreen();
             addTransectionScreen.theDashboard = this;
             addTransectionScreen.ShowDialog();
         }
 
         public void refreshData()
         {
-            userWallet = userWalletManager.loadStructFromFile(user_token);
+            userWallet = userWalletManager.loadStructFromFile(NativeFileManager.shared.GetUserToken());
 
-            TotalExpenseLabel.Content = userWalletManager.getTotalExpense(userWallet);
-            TotalIncomeLabel.Content = userWalletManager.getTotalIncome(userWallet);
+            TotalExpenseLabel.Content = userWalletManager.getTotalExpense().ToString() + " USD";
+            TotalIncomeLabel.Content = userWalletManager.getTotalIncome().ToString() + " USD";
 
             List<TransectionStruct> tempTransetions = userWalletManager.getTransectionFilter(userWallet, dateComboBoxToEnum());
             transectionPresent = userWalletManager.transectionToPresent(userWallet, tempTransetions);
@@ -135,6 +133,7 @@ namespace XspenseCSharp
             int selectIndex = TransectionTableView.SelectedIndex;
             if (selectIndex < 0)
             {
+                MessageBox.Show("Please select an item to delete");
                 return;
             }
 
@@ -152,23 +151,36 @@ namespace XspenseCSharp
             int selectIndex = TransectionTableView.SelectedIndex;
             if (selectIndex < 0)
             {
+                MessageBox.Show("Please select an item to edit");
                 return;
             }
 
-            EditTransectionScreen editTransectionScreen = new EditTransectionScreen(userWallet, (TransectionPresentStruct)TransectionTableView.SelectedItem);
+            EditTransectionScreen editTransectionScreen = new EditTransectionScreen((TransectionPresentStruct)TransectionTableView.SelectedItem);
             editTransectionScreen.theDashboard = this;
             editTransectionScreen.ShowDialog();
         }
         public async Task Invoke(Action function, int timeInSeconds)
         {
-            await Task.Delay(timeInSeconds * 1000);
+            await Task.Delay(timeInSeconds * 100);
             function();
         }
 
         private void WalletButton_Click(object sender, RoutedEventArgs e)
         {
             WalletViewController walletScreen = new WalletViewController(WalletViewTypeEnum.Wallet);
-            walletScreen.Show();
+            walletScreen.ShowDialog();
+        }
+
+        private void CurrencyButton_Click(object sender, RoutedEventArgs e)
+        {
+            WalletViewController walletScreen = new WalletViewController(WalletViewTypeEnum.Currency);
+            walletScreen.ShowDialog();
+        }
+
+        private void CategoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            WalletViewController walletScreen = new WalletViewController(WalletViewTypeEnum.Category);
+            walletScreen.ShowDialog();
         }
     }
 }

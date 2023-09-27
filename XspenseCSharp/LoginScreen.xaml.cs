@@ -47,7 +47,7 @@ namespace XspenseCSharp
                 MessageBox.Show("Incorrect password or username.\nIf you don't have an account please register.");
                 return;
             }
-            foreach (UserLoginData eachEle in userLogin.data)
+            foreach (UserLoginData eachEle in userLogin.Data)
             {
                 if (eachEle.Username.ToLower() == UsernameInputField.Text.ToLower() && eachEle.Password == PasswordInputField.Password)
                 {

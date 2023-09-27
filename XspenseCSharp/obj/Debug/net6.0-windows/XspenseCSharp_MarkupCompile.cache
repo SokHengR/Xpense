@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\SokHeng\Documents\GitHub\XspenseCSharp\XspenseCSharp\App.xaml
-7738632670
-
-132047882745
+10367721400
+11568238260
+16695000502
 195-623831500
-AddTransectionScreen.xaml;DashboardScreen.xaml;EditTransectionScreen.xaml;LoginScreen.xaml;MainWindow.xaml;RegisterScreen.xaml;WalletViewController.xaml;
+AddTransectionScreen.xaml;CategoryEditor.xaml;CurrencyEditor.xaml;DashboardScreen.xaml;EditTransectionScreen.xaml;LoginScreen.xaml;MainWindow.xaml;RegisterScreen.xaml;WalletEditor.xaml;WalletViewController.xaml;
 
 False
 

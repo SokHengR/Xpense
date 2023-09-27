@@ -21,14 +21,15 @@ namespace XspenseCSharp
     public partial class AddTransectionScreen : Window
     {
         public DashboardScreen theDashboard { get; set; }
-        UserGeneralInfoStruct  userGeneralPublic;
+        UserGeneralInfoStruct userGeneral;
+        UserWalletTransectionManager userManager = UserWalletTransectionManager.shared;
         const string loginHistory_sha256 = "857a3aaca61f85901deebacbd675f73f091c85ea52f835dc56ad77b4bae8fb28";
         string user_token = "nil";
 
-        public AddTransectionScreen(UserGeneralInfoStruct userGeneral)
+        public AddTransectionScreen()
         {
             InitializeComponent();
-            userGeneralPublic = userGeneral;
+            userGeneral = userManager.loadStructFromFile(NativeFileManager.shared.GetUserToken());
 
             user_token = NativeFileManager.shared.ReadTextFromFile(loginHistory_sha256);
 
@@ -77,12 +78,12 @@ namespace XspenseCSharp
             newTransection.uuid = Guid.NewGuid().ToString();
             newTransection.date = (DateTime)TransectionDatePicker.SelectedDate;
             newTransection.price = priceNumber;
-            newTransection.category_id = userGeneralPublic.category[CategoryComboBox.SelectedIndex].uuid;
-            newTransection.wallet_id = userGeneralPublic.wallet[WalletComboBox.SelectedIndex].uuid;
+            newTransection.category_id = userGeneral.category[CategoryComboBox.SelectedIndex].uuid;
+            newTransection.wallet_id = userGeneral.wallet[WalletComboBox.SelectedIndex].uuid;
 
-            userGeneralPublic.wallet[WalletComboBox.SelectedIndex].transection.Add(newTransection);
+            userGeneral.wallet[WalletComboBox.SelectedIndex].transection.Add(newTransection);
 
-            UserWalletTransectionManager.shared.saveStructToFile(userGeneralPublic, user_token);
+            UserWalletTransectionManager.shared.saveStructToFile(userGeneral, user_token);
             theDashboard.refreshData();
             this.Close();
         }

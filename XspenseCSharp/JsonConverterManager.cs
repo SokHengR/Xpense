@@ -9,7 +9,7 @@ namespace XspenseCSharp
 {
     public struct UserLoginDataContainer
     {
-        public List<UserLoginData> data { get; set; }
+        public List<UserLoginData> Data { get; set; }
     }
     public struct UserLoginData
     {
@@ -20,7 +20,7 @@ namespace XspenseCSharp
     }
     class JsonConverterManager
     {
-        public static JsonConverterManager shared = new JsonConverterManager();
+        public static JsonConverterManager shared = new();
         public UserLoginDataContainer ReadUserDataFromJsonString(string jsonString)
         {
             var myData = JsonConvert.DeserializeObject<UserLoginDataContainer>(jsonString);

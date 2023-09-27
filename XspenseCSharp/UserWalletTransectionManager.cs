@@ -102,8 +102,9 @@ namespace XspenseCSharp
 
 
         // totally ------------------------
-        public float getTotalIncome(UserGeneralInfoStruct originalStruct)
+        public float getTotalIncome()
         {
+            UserGeneralInfoStruct originalStruct = UserWalletTransectionManager.shared.loadStructFromFile(NativeFileManager.shared.GetUserToken());
             float totalIncome = 0;
             for (int i = 0; i < originalStruct.wallet.Count; i++)
             {
@@ -111,14 +112,22 @@ namespace XspenseCSharp
                 {
                     if (eachTransection.type == TransectionTypeEnum.Income)
                     {
-                        totalIncome += eachTransection.price;
+                        foreach (CurrencyStruct eachCurrency in originalStruct.currency)
+                        {
+                            if (eachCurrency.uuid == originalStruct.wallet[i].currency_id) {
+                                totalIncome += eachTransection.price / eachCurrency.exchange_rate;
+                                break;
+                            }
+                        }
+                        break;
                     }
                 }
             }
             return totalIncome;
         }
-        public float getTotalExpense(UserGeneralInfoStruct originalStruct)
+        public float getTotalExpense()
         {
+            UserGeneralInfoStruct originalStruct = UserWalletTransectionManager.shared.loadStructFromFile(NativeFileManager.shared.GetUserToken());
             float totalExpense = 0;
             for (int i = 0; i < originalStruct.wallet.Count; i++)
             {
@@ -126,7 +135,14 @@ namespace XspenseCSharp
                 {
                     if (eachTransection.type == TransectionTypeEnum.Expense)
                     {
-                        totalExpense += eachTransection.price;
+                        foreach (CurrencyStruct eachCurrency in originalStruct.currency)
+                        {
+                            if (eachCurrency.uuid == originalStruct.wallet[i].currency_id)
+                            {
+                                totalExpense += eachTransection.price / eachCurrency.exchange_rate;
+                                break;
+                            }
+                        }
                     }
                 }
             }
@@ -155,11 +171,18 @@ namespace XspenseCSharp
             }
             return tempWalletList;
         }
-        public void deleteWallet(UserGeneralInfoStruct originalStruct, WalletStruct theWallet)
+        public void deleteWallet(UserGeneralInfoStruct originalStruct, string walletId)
         {
             UserGeneralInfoStruct newStruct = originalStruct;
-            newStruct.wallet.Remove(theWallet);
-            saveStructToFile(newStruct, fileManagerNative.GetUserToken());
+            foreach (WalletStruct eachWallet in originalStruct.wallet)
+            {
+                if (eachWallet.uuid == walletId)
+                {
+                    newStruct.wallet.Remove(eachWallet);
+                    saveStructToFile(newStruct, fileManagerNative.GetUserToken());
+                    return;
+                }
+            }
         }
         public void addWallet(UserGeneralInfoStruct originalStruct, WalletStruct theWallet)
         {
@@ -297,6 +320,80 @@ namespace XspenseCSharp
                 }
             }
             return allTransection;
+        }
+        // Category -----------------------------------------------------------
+        public void deleteCategory(UserGeneralInfoStruct originalStruct, CategoryStruct theCategory)
+        {
+            foreach(WalletStruct eachWallet in originalStruct.wallet)
+            {
+                foreach(TransectionStruct eachTransection in eachWallet.transection)
+                {
+                    if(eachTransection.category_id == theCategory.uuid)
+                    {
+                        MessageBox.Show("You can only delete category that isn't using.");
+                        return;
+                    }
+                }
+            }
+
+            UserGeneralInfoStruct newStruct = originalStruct;
+            newStruct.category.Remove(theCategory);
+            saveStructToFile(newStruct, fileManagerNative.GetUserToken());
+        }
+        public void addCategory(UserGeneralInfoStruct originalStruct, CategoryStruct theCategory)
+        {
+            UserGeneralInfoStruct newStruct = originalStruct;
+            newStruct.category.Add(theCategory);
+            saveStructToFile(newStruct, fileManagerNative.GetUserToken());
+        }
+        public void editCategory(UserGeneralInfoStruct originalStruct, CategoryStruct theCategory)
+        {
+            UserGeneralInfoStruct newStruct = originalStruct;
+            for (int i = 0; i < originalStruct.category.Count; i++)
+            {
+                if (originalStruct.category[i].uuid == theCategory.uuid)
+                {
+                    newStruct.category[i] = theCategory;
+                    break;
+                }
+            }
+            saveStructToFile(newStruct, fileManagerNative.GetUserToken());
+        }
+
+        // Currency -----------------------------------------------------------
+        public void deleteCurrency(UserGeneralInfoStruct originalStruct, CurrencyStruct theCurrency)
+        {
+            foreach (WalletStruct eachWallet in originalStruct.wallet)
+            {
+                if (eachWallet.currency_id == theCurrency.uuid)
+                {
+                    MessageBox.Show("You can only delete currency that isn't using.");
+                    return;
+                }
+            }
+
+            UserGeneralInfoStruct newStruct = originalStruct;
+            newStruct.currency.Remove(theCurrency);
+            saveStructToFile(newStruct, fileManagerNative.GetUserToken());
+        }
+        public void addCurrency(UserGeneralInfoStruct originalStruct, CurrencyStruct theCurrency)
+        {
+            UserGeneralInfoStruct newStruct = originalStruct;
+            newStruct.currency.Add(theCurrency);
+            saveStructToFile(newStruct, fileManagerNative.GetUserToken());
+        }
+        public void editCurrency(UserGeneralInfoStruct originalStruct, CurrencyStruct theCurrency)
+        {
+            UserGeneralInfoStruct newStruct = originalStruct;
+            for (int i = 0; i < originalStruct.currency.Count; i++)
+            {
+                if (originalStruct.currency[i].uuid == theCurrency.uuid)
+                {
+                    newStruct.currency[i] = theCurrency;
+                    break;
+                }
+            }
+            saveStructToFile(newStruct, fileManagerNative.GetUserToken());
         }
     }
 }

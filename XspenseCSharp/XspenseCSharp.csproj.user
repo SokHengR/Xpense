@@ -10,6 +10,12 @@
     <Compile Update="AddTransectionScreen.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="CategoryEditor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CurrencyEditor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="DashboardScreen.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -19,11 +25,20 @@
     <Compile Update="RegisterScreen.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="WalletEditor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="WalletViewController.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="CategoryEditor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="CurrencyEditor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="EditTransectionScreen.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -40,6 +55,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="RegisterScreen.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="WalletEditor.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="WalletViewController.xaml">

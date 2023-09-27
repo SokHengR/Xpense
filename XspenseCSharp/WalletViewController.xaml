@@ -18,9 +18,9 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Button x:Name="CreateButton" Content="Create" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" Background="#FF23A400" FontSize="18" FontFamily="Bahnschrift" Height="41"/>
-            <Button x:Name="EditButton" Content="Edit" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" Background="#FFA48000" FontSize="18" FontFamily="Bahnschrift" Height="41" Grid.Column="1"/>
-            <Button x:Name="DeleteButton" Content="Delete" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" Background="#FFA40000" FontSize="18" FontFamily="Bahnschrift" Height="41" Grid.Column="2"/>
+            <Button x:Name="CreateButton" Content="Create" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" Background="#FF23A400" FontSize="18" FontFamily="Bahnschrift" Height="41" Click="CreateButton_Click"/>
+            <Button x:Name="EditButton" Content="Edit" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" Background="#FFA48000" FontSize="18" FontFamily="Bahnschrift" Height="41" Grid.Column="1" Click="EditButton_Click"/>
+            <Button x:Name="DeleteButton" Content="Delete" VerticalAlignment="Top" Foreground="White" BorderBrush="{x:Null}" Background="#FFA40000" FontSize="18" FontFamily="Bahnschrift" Height="41" Grid.Column="2" Click="DeleteButton_Click"/>
         </Grid>
         <Label x:Name="TitleLabel" Content="Wallet" Margin="10,10,10,0" VerticalAlignment="Top" Foreground="White" FontFamily="Bahnschrift SemiBold" FontSize="36" HorizontalContentAlignment="Center"/>
     </Grid>

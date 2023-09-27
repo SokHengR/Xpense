@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XspenseCSharp"
         mc:Ignorable="d"
-        Title="Add Transection" Height="500" Width="300" Background="#FF1F1F1F" MinHeight="500" MinWidth="300" Icon="/xpense_app_icon.png" WindowStartupLocation="CenterScreen">
+        Title="Add Transection" Height="500" Width="300" Background="Black" MinHeight="500" MinWidth="300" Icon="/xpense_app_icon.png" WindowStartupLocation="CenterScreen">
     <Grid>
+        <Image HorizontalAlignment="Right" Width="144" Height="159" VerticalAlignment="Bottom" Source="/x_splashscreen_sprite.png"/>
+
         <Label Content="Add Transection" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="22" FontWeight="Bold" FontFamily="Bahnschrift SemiBold" Foreground="White"/>
         <TextBox x:Name="PricingInputField" Margin="10,85,10,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="Price :" Margin="10,51,10,0" VerticalAlignment="Top" Foreground="White" FontSize="18" FontFamily="Segoe UI Semibold"/>

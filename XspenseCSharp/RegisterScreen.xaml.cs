@@ -36,7 +36,7 @@ namespace XspenseCSharp
             {
                 String fileContentString = NativeFileManager.shared.ReadTextFromFile(userAccount_sha256);
                 UserLoginDataContainer userLoginDataContainer = JsonConverterManager.shared.ReadUserDataFromJsonString(fileContentString);
-                foreach (var eachItem in userLoginDataContainer.data)
+                foreach (var eachItem in userLoginDataContainer.Data)
                 {
                     if (eachItem.Username.ToLower() == UsernameTextBox.Text.ToLower())
                     {
@@ -49,7 +49,7 @@ namespace XspenseCSharp
                 newUser.Email = EmailTextBox.Text;
                 newUser.Password = PasswordTextBox.Password;
                 newUser.UserUUID = Guid.NewGuid().ToString();
-                userLoginDataContainer.data.Add(newUser);
+                userLoginDataContainer.Data.Add(newUser);
                 string jsonOutputContent = JsonConverterManager.shared.WriteUserToJsonData(userLoginDataContainer);
                 NativeFileManager.shared.SaveTextToFile(jsonOutputContent, userAccount_sha256);
             }
@@ -61,7 +61,7 @@ namespace XspenseCSharp
                 newUser.Email = EmailTextBox.Text;
                 newUser.Password = PasswordTextBox.Password;
                 newUser.UserUUID = Guid.NewGuid().ToString();
-                userLoginDataContainer.data = new List<UserLoginData>() { newUser };
+                userLoginDataContainer.Data = new List<UserLoginData>() { newUser };
                 string jsonOutputContent = JsonConverterManager.shared.WriteUserToJsonData(userLoginDataContainer);
                 NativeFileManager.shared.SaveTextToFile(jsonOutputContent, userAccount_sha256);
             }

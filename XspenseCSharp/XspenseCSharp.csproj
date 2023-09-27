@@ -5,6 +5,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>xpense_app_icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,6 +15,10 @@
 	<None Remove="xpense_app_icon.png" />
 	  <None Remove="trending_down_black.png" />
 	  <None Remove="trending_up_white.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="xpense_app_icon.ico" />
   </ItemGroup>
 
   <ItemGroup>
